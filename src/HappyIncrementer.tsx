@@ -19,7 +19,7 @@ const HappyIncrementer: React.FC<HappyIncrementerProps> = () => {
       <button
         onClick={() => {
 
-  despatch(happyAction(quantity))
+  despatch(happyAction(quantity , (new Date).toLocaleString() ))
         }}
         className="bg-blue-500 m-3 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
       >

@@ -24,7 +24,7 @@ const SadIncrementer: React.FC<sadIncrementerProps> = () => {
       />
       <button
         onClick={() => {
-          despatch(sadAction(quantity));
+          despatch(sadAction(quantity, new Date().toLocaleString()));
         }}
         className="bg-red-500 m-3 hover:bg-red-700  text-white font-bold py-2 px-4 rounded"
       >

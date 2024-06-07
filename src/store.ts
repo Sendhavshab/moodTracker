@@ -1,41 +1,42 @@
-import {  UnknownAction, createStore } from "redux"
+import { UnknownAction, createStore } from "redux";
 import { HAPPY, SAD } from "./action";
 
- export type State = {
-    sadCount: number ,
-    happyCount: number
- }
+export type Moments = {
+  intentsity: number;
+  time: string;
+};
 
- const initialState : State = {
+export type State = {
+  sadMoments: Moments[];
+  happyMoments: Moments[];
+};
 
-    sadCount: 0,
-    happyCount: 0
- }
+const initialState: State = {
+  sadMoments: [],
+  happyMoments: [],
+};
 
- const reducer = (
-   state: State = initialState,
-   action: UnknownAction
- ): State => {
-   switch (action.type) {
-     case HAPPY:
-       return {
-         ...state,
-         happyCount: state.happyCount + (action.payload as number),
-       };
-     case SAD:
-       return {
-         ...state,
-         sadCount: state.sadCount + (action.payload as number),
-       };
+const reducer = (state: State = initialState, action: UnknownAction): State => {
+  switch (action.type) {
+    case HAPPY:
+      return {
+        ...state,
+        happyMoments: [...state.happyMoments, <Moments>action.payload],
+      };
+    case SAD:
+      return {
+        ...state,
+        sadMoments: [...state.sadMoments, <Moments>action.payload],
+      };
 
-     default:
-       return state;
-   }
- };
+    default:
+      return state;
+  }
+};
 
- const store = createStore(
-   reducer,
+const store = createStore(
+  reducer,
   window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
- );
+);
 
- export default store;
+export default store;
