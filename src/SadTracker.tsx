@@ -12,7 +12,7 @@ const SadTracker: React.FC<SadTrackerProps> = () => {
 
   return (
     <div className="bg-red-700 p-3 text-white ">
-      happTime :
+      sad :
       {sadMoments.map((moment: Moments, i: number) => {
         return (
           <div key={i}>

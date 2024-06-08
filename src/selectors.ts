@@ -1,8 +1,8 @@
 import { State } from "./store";
 
 export function happyMomentsSelector(state: State) {
-  return state.happyMoments;
+  return state.happy.happyMoments;
 }
 export function sadMomentsSelector(state: State) {
-  return state.sadMoments;
+  return state.sad.sadMoments;
 }

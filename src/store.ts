@@ -1,5 +1,8 @@
 import { UnknownAction, createStore } from "redux";
-import { HAPPY, SAD } from "./action";
+import { SadState, initialSadState, sadReducer } from "./SadReducer";
+import { HappyState, happyReducer, initialHappyState } from "./HappyReducer";
+import { deleteReducer } from "./DeleteReducer";
+import { DELETE } from "./action";
 
 export type Moments = {
   intentsity: number;
@@ -7,31 +10,29 @@ export type Moments = {
 };
 
 export type State = {
-  sadMoments: Moments[];
-  happyMoments: Moments[];
+  sad: SadState ,
+  happy: HappyState,
+
 };
 
 const initialState: State = {
-  sadMoments: [],
-  happyMoments: [],
+  sad: initialSadState,
+  happy: initialHappyState
 };
 
 const reducer = (state: State = initialState, action: UnknownAction): State => {
-  switch (action.type) {
-    case HAPPY:
-      return {
-        ...state,
-        happyMoments: [...state.happyMoments, <Moments>action.payload],
-      };
-    case SAD:
-      return {
-        ...state,
-        sadMoments: [...state.sadMoments, <Moments>action.payload],
-      };
 
-    default:
-      return state;
+  if(action.type === DELETE){
+    const newState = deleteReducer(state, action);
+    return newState;
   }
+
+  return{
+    sad: sadReducer(state.sad , action),
+    happy: happyReducer(state.happy , action),
+
+  }
+ 
 };
 
 const store = createStore(

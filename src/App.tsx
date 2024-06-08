@@ -2,6 +2,7 @@ import HappyTracker from "./HappyTracker";
 import SadTracker from "./SadTracker";
 import HappyIncrementer from "./HappyIncrementer";
 import SadIncrementer from "./SadIncrementer";
+import ClearButton from "./ClearButton";
 
   
 const App = ( ) => {
@@ -13,7 +14,7 @@ const App = ( ) => {
       <SadTracker />
       <HappyIncrementer />
       <SadIncrementer />
-    
+    <ClearButton>clear</ClearButton>
     </div>
   );
 };
