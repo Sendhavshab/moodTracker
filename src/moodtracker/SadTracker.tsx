@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { sadMomentsSelector } from "./selectors";
-import { Moments } from "./store";
+import { Moments } from "../store";
+import { sadMomentsSelector } from "../selecters/mood-selectors";
 
 interface SadTrackerProps {
   // define props here
@@ -16,7 +16,7 @@ const SadTracker: React.FC<SadTrackerProps> = () => {
       {sadMoments.map((moment: Moments, i: number) => {
         return (
           <div key={i}>
-            intensity : {moment.intentsity} , at {moment.time}
+            intensity : {moment.intensity} , at {moment.time}
           </div>
         );
       })}

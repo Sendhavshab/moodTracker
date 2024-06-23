@@ -1,14 +1,13 @@
-import React, { useState } from 'react';
-import { sadAction } from './action';
-import { useDispatch } from 'react-redux';
+import React, { useState } from "react";
+import { sadAction } from "../actions/momentsAction";
+import { useDispatch } from "react-redux";
 
 interface sadIncrementerProps {
   // define props here
 }
 
 const SadIncrementer: React.FC<sadIncrementerProps> = () => {
-  
-  const [quantity, setQuantity] = useState(0); 
+  const [quantity, setQuantity] = useState(0);
   const despatch = useDispatch();
   return (
     <div>

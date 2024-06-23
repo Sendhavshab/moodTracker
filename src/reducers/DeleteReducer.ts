@@ -1,6 +1,6 @@
 import { UnknownAction } from "redux";
-import { DELETE } from "./action";
-import { State } from "./store";
+import { DELETE } from "../actions/momentsAction";
+import { State } from "../store";
 import { initialSadState } from "./SadReducer";
 import { initialHappyState } from "./HappyReducer";
 
@@ -9,7 +9,7 @@ export const deleteReducer = (state: State, action: UnknownAction) => {
     case DELETE:
       return {
         sad: initialSadState,
-        happy : initialHappyState
+        happy: initialHappyState,
       };
 
     default:

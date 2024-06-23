@@ -1,39 +1,26 @@
-import { UnknownAction, createStore } from "redux";
-import { SadState, initialSadState, sadReducer } from "./SadReducer";
-import { HappyState, happyReducer, initialHappyState } from "./HappyReducer";
-import { deleteReducer } from "./DeleteReducer";
-import { DELETE } from "./action";
+import { createStore, combineReducers } from "redux";
+import { sadReducer } from "./reducers/SadReducer";
+import {
+  happyReducer,
+} from "./reducers/HappyReducer";
+import { ProductReducer } from "./reducers/Product";
 
 export type Moments = {
-  intentsity: number;
+  intensity: number;
   time: string;
 };
 
-export type State = {
-  sad: SadState ,
-  happy: HappyState,
 
-};
 
-const initialState: State = {
-  sad: initialSadState,
-  happy: initialHappyState
-};
 
-const reducer = (state: State = initialState, action: UnknownAction): State => {
+const reducer = combineReducers({
+  sad: sadReducer,
+  happy: happyReducer,
+  product : ProductReducer
+});
 
-  if(action.type === DELETE){
-    const newState = deleteReducer(state, action);
-    return newState;
-  }
+export type State = ReturnType<typeof reducer>
 
-  return{
-    sad: sadReducer(state.sad , action),
-    happy: happyReducer(state.happy , action),
-
-  }
- 
-};
 
 const store = createStore(
   reducer,
